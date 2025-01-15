@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Classification Result</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="home-button">
+        <button onclick="window.location.href='/'">Home</button>
+    </div>
+
+    <div class="container">
+        <div id="result">
+            {% if image_url %}
+                <div class="item-name">{{ result }}</div>
+                <img src="{{ image_url }}" alt="Uploaded Image">
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

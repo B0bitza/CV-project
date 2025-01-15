@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Image Classification</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <script>
+        function previewFile() {
+            const input = document.querySelector('input[type=file]');
+            const imgPreview = document.getElementById("img-preview");
+
+            if (window.FileReader) {
+                const reader = new FileReader();
+                reader.onloadend = function () {
+                    imgPreview.src = reader.result;
+                    imgPreview.style.display = "block";
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        window.addEventListener('load', function() {
+            document.querySelector('input[type=file]').addEventListener("change", previewFile);
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <form action="/" method="post" enctype="multipart/form-data">
+            <h1>Upload Image for Classification</h1>
+            <label for="image-upload">Choose File</label>
+            <input type="file" name="image" id="image-upload" accept="image/*"><br><br>
+            <button type="submit">Classify</button>
+        </form>
+
+        <div id="preview-img">
+            <img id="img-preview" src="" alt="Preview Image" style="display: none;">
+        </div>
+    </div>
+</body>
+</html>
